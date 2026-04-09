@@ -1,0 +1,16 @@
+name: EvalCI Smoke Test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  eval:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: SynapseKit/evalci@v1
+        with:
+          path: tests/evals
+          threshold: "0.80"
+          extras: "openai"
